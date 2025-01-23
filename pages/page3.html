@@ -211,6 +211,8 @@
         <div id="result" class="result-container" style="display: none;">
             <p id="old-dps-result" class="old-dps">DPS Antigo: </p>
             <p id="new-dps-result">DPS com Passiva: </p>
+            <p id="base-damage-result"> Dano base sem Passiva: </p>
+            <p id="new-base-damage-result"> Dano base com Passiva: </p>
             <p id="range-result">Alcance Antigo: </p>
             <p id="new-range-result">Alcance com Passiva: </p>
             <p id="attack-speed-result">SPA Antigo: </p>
@@ -230,6 +232,7 @@
             const passive = document.getElementById('passive').value;
 
             let passiveMultiplier = 1;
+            let adjustDamage = baseDamage;
             let adjustedAttackSpeed = attackSpeed;
             let adjustedRange = range;
             let oldDps = baseDamage / attackSpeed;
@@ -237,6 +240,7 @@
 
             // Mostrar os atributos antigos antes de qualquer passiva ser aplicada
             document.getElementById('old-dps-result').textContent = `DPS Antigo: ${oldDps.toFixed(2)}`;
+            document.getElementById('base-damage-result').textContent = `Dano base sem Passiva: ${baseDamage.toFixed(2)}`;
             document.getElementById('range-result').textContent = `Alcance Antigo: ${range.toFixed(2)}`;
             document.getElementById('attack-speed-result').textContent = `SPA Antigo: ${attackSpeed.toFixed(2)}`;
 
@@ -305,10 +309,11 @@
 
             // Calcular novo DPS e atualizar a interface
             newDps = baseDamage * passiveMultiplier / adjustedAttackSpeed;
+            adjustDamage = baseDamage * passiveMultiplier;
             document.getElementById('new-dps-result').textContent = `DPS com Passiva: ${newDps.toFixed(2)}`;
             document.getElementById('new-range-result').textContent = `Alcance com Passiva: ${adjustedRange.toFixed(2)}`;
             document.getElementById('new-attack-speed-result').textContent = `SPA com Passiva: ${adjustedAttackSpeed.toFixed(2)}`;
-
+            document.getElementById('new-base-damage-result').textContent = `Dano Base com Passiva: ${adjustDamage.toFixed(2)}`;
             document.getElementById('result').style.display = 'block';
         }
     </script>
