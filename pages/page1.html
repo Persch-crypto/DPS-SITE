@@ -3,103 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de DPS - Detalhes</title>
+    <title>Calculadora de DPS</title>
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a2334;
-            color: #f5f5f5;
+            background-color: #34495e; /* Mudando o fundo para um tom mais chamativo */
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
         }
 
         .header {
-            background: linear-gradient(90deg, #3a4f70, #516b91);
             width: 100%;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 30px 0;
+            background-color: #2c3e50;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .header h1 {
-            margin: 0;
             font-size: 2.5em;
             color: #ffffff;
+            margin: 0;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            font-size: 1.5em;
+            color: #1d0303;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: #e22626 2px solid;
+            border-radius: 50%;
+            background-color: #ec0909;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
         }
 
         .form-container {
-            background: #2a3450;
+            background: #2c3e50;
             border-radius: 10px;
-            padding: 20px;
-            margin: 20px;
+            padding: 30px;
             width: 80%;
-            max-width: 600px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            max-width: 650px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .form-container h2 {
+            color: #ffffff;
             margin-bottom: 20px;
-            color: #f5f5f5;
+            font-size: 1.8em;
+            text-align: center;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #cccccc;
+            color: #ecf0f1;
+            font-size: 1.2em;
+            flex: 1;
+            text-align: left;
+            margin-right: 10px;
         }
 
         .form-group input, .form-group select {
-            width: 90%;
+            width: 70%;
             padding: 12px;
+            font-size: 1.1em;
             border: none;
-            border-radius: 5px;
-            font-size: 1em;
+            border-radius: 8px;
+            background: #34495e;
+            color: #ecf0f1;
+            text-align: center;
         }
 
-        .form-group select {
-            background: #3a4f70;
-            color: #ffffff;
-        }
-
-        .form-group input {
-            background: #3b4a66; /* Cor mais visível para os campos de input */
-            color: #ffffff;
+        .form-group img {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
         }
 
         .calculate-button {
-            display: inline-block;
-            background: #516b91;
+            background: #27ae60;
             color: #ffffff;
             border: none;
             border-radius: 50px;
-            padding: 10px 20px;
-            font-size: 1.2em;
+            padding: 12px 25px;
+            font-size: 1.3em;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             width: 100%;
+            margin-top: 20px;
         }
 
         .calculate-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
         }
 
         .result-container {
             margin-top: 20px;
             padding: 20px;
-            background: #3a4f70;
+            background: #2980b9;
             border-radius: 10px;
             color: #ffffff;
-            font-size: 1.2em;
+            font-size: 1.5em;
             text-align: center;
+            display: none;
         }
 
         footer {
@@ -108,26 +139,38 @@
             padding: 20px;
             width: 100%;
             text-align: center;
-            margin-top: auto;
+            margin-top: 30px;
+        }
+
+        /* Ajuste para o botão das relíquias */
+        select {
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            background-color: #34495e;
+            color: #ecf0f1;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Calculadora de DPS</h1>
+        <button class="back-button" onclick="window.location.href='../index.html'">X</button>
+        <h1>DPS</h1>
     </div>
 
     <div class="form-container">
-        <h2>Informações do Personagem</h2>
+        <h2>Character</h2>
         <form id="dps-form">
             <div class="form-group">
                 <label for="base-damage">Dano Base</label>
                 <input type="number" id="base-damage" name="base-damage" required>
+                <img src="../images/sword.png" alt="Dano Base">
             </div>
 
             <div class="form-group">
                 <label for="attack-speed">Velocidade de Ataque (s)</label>
                 <input type="number" id="attack-speed" name="attack-speed" step="0.01" required>
+                <img src="../images/velocidade.png" alt="Velocidade de Ataque">
             </div>
 
             <div class="form-group">
@@ -144,10 +187,14 @@
                 <label for="relic">Escolha uma Relíquia</label>
                 <select id="relic" name="relic">
                     <option value="">Selecione uma Relíquia</option>
-                    <option value="relic1">Relíquia 1</option>
-                    <option value="relic2">Relíquia 2</option>
-                    <option value="relic3">Relíquia 3</option>
-                    <option value="relic4">Relíquia 4</option>
+                    <option value="relic1">Infernal Gaze (5% element type)</option>
+                    <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
+                    <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
+                    <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
+                    <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
+                    <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
+                    <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
+                    <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
                 </select>
             </div>
 
@@ -164,7 +211,7 @@
             <button type="button" class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
         </form>
 
-        <div id="result" class="result-container" style="display: none;">
+        <div id="result" class="result-container">
             <p id="dps-result">DPS Calculado: </p>
         </div>
     </div>
@@ -189,16 +236,28 @@
             let relicMultiplier = 1; // Se não houver relíquia, o multiplicador será 1 (sem efeito extra)
             switch(relic) {
                 case 'relic1':
-                    relicMultiplier = 1.2; // Exemplo de efeito da Relíquia 1
+                    relicMultiplier = 1.05; // Exemplo de efeito da Relíquia 1
                     break;
                 case 'relic2':
-                    relicMultiplier = 1.15; // Exemplo de efeito da Relíquia 2
+                    relicMultiplier = 1.05; // Exemplo de efeito da Relíquia 2
                     break;
                 case 'relic3':
-                    relicMultiplier = 1.3; // Exemplo de efeito da Relíquia 3
+                    relicMultiplier = 1.13; // Exemplo de efeito da Relíquia 3
                     break;
                 case 'relic4':
-                    relicMultiplier = 1.25; // Exemplo de efeito da Relíquia 4
+                    relicMultiplier = 1.13; // Exemplo de efeito da Relíquia 4
+                    break;
+                case 'relic5': 
+                    relicMultiplier = 1.13;
+                    break;
+                case 'relic6': 
+                    relicMultiplier = 1.13;
+                    break;
+                case 'relic 7': 
+                    relicMultiplier = 1.05;
+                    break;
+                case 'relic 8': 
+                    relicMultiplier = 1.05;
                     break;
                 default:
                     relicMultiplier = 1; // Nenhuma relíquia escolhida

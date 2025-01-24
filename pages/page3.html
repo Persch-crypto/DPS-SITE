@@ -9,7 +9,7 @@
             font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a2334;
+            background-color: #34495e;
             color: #f5f5f5;
             display: flex;
             flex-direction: column;
@@ -30,6 +30,26 @@
             font-size: 2.5em;
             color: #ffffff;
         }
+
+        .back-button {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            font-size: 1.5em;
+            color: #1d0303;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: #e22626 2px solid;
+            border-radius: 50%;
+            background-color: #ec0909;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+        }
+
 
         .form-container {
             background: #2a3450;
@@ -74,9 +94,16 @@
             color: #ffffff;
         }
 
+        .form-group img {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
         .calculate-button {
             display: inline-block;
-            background: #516b91;
+            background: #27ae60;
             color: #ffffff;
             border: none;
             border-radius: 50px;
@@ -158,7 +185,10 @@
 <body>
     <div class="header">
         <h1>Calculadora de DPS com Passivas</h1>
+        <button class="back-button" onclick="window.location.href='../index.html'">X</button>
     </div>
+
+    
 
     <div class="form-container">
         <h2>Informações do Personagem</h2>
@@ -166,16 +196,21 @@
             <div class="form-group">
                 <label for="base-damage">Dano Base</label>
                 <input type="number" id="base-damage" name="base-damage" required>
+                <img src="../images/sword.png" alt="Dano Base">
+
             </div>
 
             <div class="form-group">
                 <label for="attack-speed">Velocidade de Ataque (s)</label>
                 <input type="number" id="attack-speed" name="attack-speed" step="0.01" required>
+                <img src="../images/velocidade.png" alt="Dano Base">
+
             </div>
 
             <div class="form-group">
-                <label for="range">Alcance (metros)</label>
+                <label for="range">Range </label>
                 <input type="number" id="range" name="range" required>
+                <img src="../images/range.png" alt="Dano Base">
             </div>
 
             <div class="form-group">
@@ -209,6 +244,8 @@
         <div id="result" class="result-container" style="display: none;">
             <p id="old-dps-result" class="old-dps">DPS Antigo: </p>
             <p id="new-dps-result">DPS com Passiva: </p>
+            <p id="base-damage-result">DPS com Passiva: </p>
+            <p id="new-base-damage-result">DPS com Passiva: </p>
             <p id="range-result">Alcance Antigo: </p>
             <p id="new-range-result">Alcance com Passiva: </p>
             <p id="attack-speed-result">SPA Antigo: </p>
@@ -228,15 +265,17 @@
             const passive = document.getElementById('passive').value;
 
             let passiveMultiplier = 1;
+            let newBaseDamage = baseDamage;
             let adjustedAttackSpeed = attackSpeed;
             let adjustedRange = range;
             let oldDps = baseDamage / attackSpeed;
             let newDps = oldDps;
 
             // Mostrar os atributos antigos antes de qualquer passiva ser aplicada
-            document.getElementById('old-dps-result').textContent = `DPS Antigo: ${oldDps.toFixed(2)}`;
-            document.getElementById('range-result').textContent = `Alcance Antigo: ${range.toFixed(2)}`;
-            document.getElementById('attack-speed-result').textContent = `SPA Antigo: ${attackSpeed.toFixed(2)}`;
+            document.getElementById('base-damage-result').textContent = `DPS sem passiva: ${oldDps.toFixed(2)}`;
+            document.getElementById('base-damage-result').textContent = `Dano sem passiva: ${baseDamage.toFixed(2)}`;
+            document.getElementById('range-result').textContent = `Range sem passiva: ${range.toFixed(2)}`;
+            document.getElementById('attack-speed-result').textContent = `SPA sem passiva: ${attackSpeed.toFixed(2)}`;
 
             switch(passive) {
                 case 'superior1':
@@ -303,10 +342,11 @@
 
             // Calcular novo DPS e atualizar a interface
             newDps = baseDamage * passiveMultiplier / adjustedAttackSpeed;
+            newBaseDamage = baseDamage * passiveMultiplier;
             document.getElementById('new-dps-result').textContent = `DPS com Passiva: ${newDps.toFixed(2)}`;
+            document.getElementById('new-base-damage-result').textContent = `Dano com Passiva: ${newBaseDamage.toFixed(2)}`;
             document.getElementById('new-range-result').textContent = `Alcance com Passiva: ${adjustedRange.toFixed(2)}`;
             document.getElementById('new-attack-speed-result').textContent = `SPA com Passiva: ${adjustedAttackSpeed.toFixed(2)}`;
-
             document.getElementById('result').style.display = 'block';
         }
     </script>
