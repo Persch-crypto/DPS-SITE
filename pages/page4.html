@@ -367,14 +367,42 @@
             else 
             finalBaseDamage += baseDamage * 0.15;
         } else if (passive === 'celestial') {
-            if (type === 'sub') {
-                finalBaseDamage -= baseDamage * 0.10;
-                finalRange -= range * 0.10;
-            } else {
-                finalBaseDamage += baseDamage * 0.10;
-                finalRange += range * 0.10;
-            }
+        if (type === 'sub') {
+            finalBaseDamage -= baseDamage * 0.10;  // -10% de dano
+            finalRange -= range * 0.10;  // -10% de alcance
+        } else {
+            finalBaseDamage += baseDamage * 0.10;  // +10% de dano
+            finalRange += range * 0.10;  // +10% de alcance
+            // Adicionando o efeito de dano verdadeiro
+            // Como esse tipo de dano pode ser específico de como o jogo lida com isso, você pode criar uma variável para "dano verdadeiro" 
+            // e depois adicionar uma lógica adicional para aplicar esse efeito.
+            // Exemplo de aplicação fictícia (você deve adaptar isso conforme seu modelo de jogo):
+            const trueDamageBonus = baseDamage * 0.20;
+            finalBaseDamage += trueDamageBonus;
         }
+    } else if (passive === 'divine') {
+        if (type === 'sub') {
+            finalBaseDamage -= baseDamage * 0.15;  // -15% de dano
+            finalAttackSpeed += attackSpeed * 0.10;  // -10% de velocidade de ataque
+            finalRange -= range * 0.20;
+        } else {
+            finalBaseDamage += baseDamage * 0.15;  // +15% de dano
+            finalAttackSpeed -= attackSpeed * 0.10;  // +10% de velocidade de ataque
+            finalRange += range * 0.20;
+        }
+    } else if (passive === 'unique') {
+        if (type === 'sub') {
+            finalBaseDamage -= baseDamage * 3.0;  // -25% de dano
+            finalAttackSpeed += attackSpeed * 0.10;  // -20% de velocidade de ataque
+            finalRange -= range * 0.10;  // -20% de alcance
+        } else {
+            finalBaseDamage += baseDamage * 3.0;  // +25% de dano
+            finalAttackSpeed -= attackSpeed * 0.10;  // +20% de velocidade de ataque
+            finalRange += range * 0.10;  // +20% de alcance
+        }
+      }
+    
+    }
 
 
     // Aplica a primeira passiva (subtração)
@@ -402,7 +430,7 @@
 
     document.getElementById('result').style.display = 'block';
 }
-
+ 
         
     </script>
 </body>
