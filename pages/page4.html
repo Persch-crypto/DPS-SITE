@@ -184,6 +184,7 @@
             text-align: center;
         }
 
+
     </style>
 </head>
 <body>
@@ -198,27 +199,25 @@
         <h2>Character</h2>
         <form id="dps-form">
             <div class="form-group">
-                <label for="base-damage">Dano Base</label>
+                <label for="base-damage">Dano</label>
                 <input type="number" id="base-damage" name="base-damage" required>
                 <img src="../images/sword.png" alt="Dano Base">
-
             </div>
-
+    
             <div class="form-group">
                 <label for="attack-speed">Velocidade de Ataque (s)</label>
                 <input type="number" id="attack-speed" name="attack-speed" step="0.01" required>
                 <img src="../images/velocidade.png" alt="Dano Base">
-
             </div>
-
+    
             <div class="form-group">
-                <label for="range">Range </label>
+                <label for="range">Range</label>
                 <input type="number" id="range" name="range" required>
                 <img src="../images/range.png" alt="Dano Base">
             </div>
-
+    
             <div class="form-group">
-                <label for="passive">Escolha uma Passiva</label>
+                <label for="passive">Escolha uma Passiva (Subtração)</label>
                 <select id="passive" name="passive">
                     <option value="" class="passive-option">Sem Passiva</option>
                     <option value="superior1" class="passive-option">Superior I (+10% dano)</option>
@@ -242,11 +241,39 @@
                 </select>
             </div>
 
+            
+    
+            <div class="form-group">
+                <label for="second-passive">Escolha uma Passiva (Adição)</label>
+                <select id="second-passive" name="second-passive">
+                    <option value="" class="passive-option">Sem Passiva</option>
+                    <option value="superior1" class="passive-option">Superior I (+10% dano)</option>
+                    <option value="superior2" class="passive-option">Superior II (+12.5% dano)</option>
+                    <option value="superior3" class="passive-option">Superior III (+15% dano)</option>
+                    <option value="nimble1" class="passive-option">Nimble I (-5% SPA)</option>
+                    <option value="nimble2" class="passive-option">Nimble II (-7.5% SPA)</option>
+                    <option value="nimble3" class="passive-option">Nimble III (-12% SPA)</option>
+                    <option value="range1" class="passive-option">Range I (+10% alcance)</option>
+                    <option value="range2" class="passive-option">Range II (+12.5% alcance)</option>
+                    <option value="range3" class="passive-option">Range III (+15% alcance)</option>
+                    <option value="adept" class="legendary">Adept (XP ganho +50%)</option>
+                    <option value="culling" class="legendary">Culling (+20% dano em inimigos com menos de 30% de HP)</option>
+                    <option value="sniper" class="legendary">Sniper (+25% alcance)</option>
+                    <option value="godspeed" class="legendary">Godspeed (-20% SPA)</option>
+                    <option value="reaper" class="orange-passive-1">Reaper (+15% dano, +25% dano em bosses)</option>
+                    <option value="celestial" class="orange-passive-2">Celestial (+10% dano, +10% alcance, +20% dano verdadeiro)</option>
+                    <option value="divine" class="orange-passive-3">Divine (+20% dano, -10% SPA, +20% alcance)</option>
+                    <option value="golden" class="orange-passive-4">Golden (+30% dano, +20% Yen)</option>
+                    <option value="unique" class="orange-passive-5">Unique (+300% dano, -10% SPA, +10% alcance)</option>
+                </select>
+            </div>
+    
             <button type="button" class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
         </form>
 
-        <a href="page4.html" class="page4"><p>Clique aqui se seu personagem ja tem uma passiva</p></a>
+        <a href="page3.html" class="page4"><p>Clique aqui se seu personagem não tem uma passiva!</p></a>
 
+    
         <div id="result" class="result-container" style="display: none;">
             <p id="old-dps-result" class="old-dps">DPS Antigo: </p>
             <p id="new-dps-result">DPS com Passiva: </p>
@@ -258,104 +285,124 @@
             <p id="new-attack-speed-result">SPA com Passiva: </p>
         </div>
     </div>
+    
 
     <footer>
         <p>&copy; 2025 Black Knights. Todos os direitos reservados.</p>
     </footer>
 
     <script>
+        // Função principal para calcular o DPS
         function calculateDPS() {
-            const baseDamage = parseFloat(document.getElementById('base-damage').value);
-            const attackSpeed = parseFloat(document.getElementById('attack-speed').value);
-            const range = parseFloat(document.getElementById('range').value);
-            const passive = document.getElementById('passive').value;
+    // Obtendo os valores inseridos pelo usuário
+    const baseDamage = parseFloat(document.getElementById('base-damage').value);
+    const attackSpeed = parseFloat(document.getElementById('attack-speed').value);
+    const range = parseFloat(document.getElementById('range').value);
 
-            let passiveMultiplier = 1;
-            let newBaseDamage = baseDamage;
-            let adjustedAttackSpeed = attackSpeed;
-            let adjustedRange = range;
-            let oldDps = baseDamage / attackSpeed;
-            let newDps = oldDps;
+    // Pegando as passivas escolhidas
+    const firstPassive = document.getElementById('passive').value;
+    const secondPassive = document.getElementById('second-passive').value;
 
-            // Mostrar os atributos antigos antes de qualquer passiva ser aplicada
-            document.getElementById('old-dps-result').textContent = `DPS Antigo: ${oldDps.toFixed(2)}`;
-            document.getElementById('base-damage-result').textContent = `Dano sem passiva ${baseDamage.toFixed(2)}`;
-            document.getElementById('range-result').textContent = `Alcance Antigo: ${range.toFixed(2)}`;
-            document.getElementById('attack-speed-result').textContent = `SPA Antigo: ${attackSpeed.toFixed(2)}`;
+    // Variáveis para armazenar os valores alterados
+    let finalBaseDamage = baseDamage;
+    let finalAttackSpeed = attackSpeed;
+    let finalRange = range;
 
-            switch(passive) {
-                case 'superior1':
-                    passiveMultiplier = 1.10;
-                    break;
-                case 'superior2':
-                    passiveMultiplier = 1.125;
-                    break;
-                case 'superior3':
-                    passiveMultiplier = 1.15;
-                    break;
-                case 'nimble1':
-                    adjustedAttackSpeed = attackSpeed * 0.95;
-                    break;
-                case 'nimble2':
-                    adjustedAttackSpeed = attackSpeed * 0.925;
-                    break;
-                case 'nimble3':
-                    adjustedAttackSpeed = attackSpeed * 0.88;
-                    break;
-                case 'range1':
-                    adjustedRange = range * 1.1;
-                    break;
-                case 'range2':
-                    adjustedRange = range * 1.125;
-                    break;
-                case 'range3':
-                    adjustedRange = range * 1.15;
-                    break;
-                case 'adept':
-                    passiveMultiplier = 1;
-                    break;
-                case 'culling':
-                    passiveMultiplier = 1.2;
-                    break;
-                case 'sniper':
-                    passiveMultiplier = 1.25;
-                    adjustedRange = range * 1.5;
-                    break;
-                case 'godspeed':
-                    passiveMultiplier = 1;
-                    adjustedAttackSpeed = attackSpeed * 0.80;
-                    break;
-                case 'reaper':
-                    passiveMultiplier = 1.15;
-                    break;
-                case 'celestial':
-                    passiveMultiplier = 1.10;
-                    adjustedRange = range * 1.1;
-                    break;
-                case 'divine':
-                    passiveMultiplier = 1.2;
-                    adjustedRange = range * 1.2;
-                    break;
-                case 'golden':
-                    passiveMultiplier = 1.3;
-                    break;
-                case 'unique':
-                    passiveMultiplier = 3;
-                    adjustedAttackSpeed = attackSpeed * 0.90;
-                    adjustedRange = range * 1.1;
-                    break;
-            }
+    // Função para aplicar a subtração de passivas
+    function applyPassiveEffects(passive, type) {
+        if (passive === 'superior1') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.10;
+            else finalBaseDamage += baseDamage * 0.10;
+        } else if (passive === 'superior2') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.125;
+            else finalBaseDamage += baseDamage * 0.125;
+        } else if (passive === 'superior3') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.15;
+            else finalBaseDamage += baseDamage * 0.15;
+        } else if (passive === 'nimble1') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.05;
+            else finalAttackSpeed -= attackSpeed * 0.05;
+        } else if (passive === 'nimble2') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.075;
+            else finalAttackSpeed -= attackSpeed * 0.075;
+        } else if (passive === 'nimble3') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.12;
+            else finalAttackSpeed -= attackSpeed * 0.12;
+        } else if (passive === 'range1') {
+            if (type === 'sub') finalRange -= range * 0.10;
+            else finalRange += range * 0.10;
+        } else if (passive === 'range2') {
+            if (type === 'sub') finalRange -= range * 0.125;
+            else finalRange += range * 0.125;
+        } else if (passive === 'range3') {
+            if (type === 'sub') finalRange -= range * 0.15;
+            else finalRange += range * 0.15;
+        }  else if (passive === 'adept') {
+            if (type === 'sub') finalRange -= range * 0.15;
+            else finalRange += range * 0.15;
+        }  else if (passive === 'culling') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.20;
+            else finalBaseDamage += baseDamage * 0.2;
+        }   else if (passive === 'sniper') {
+            if (type === 'sub') finalRange -= range * 0.25;
+            else finalRange += range * 0.25;
+        }  else if (passive === 'godspeed') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.20;
+            else finalAttackSpeed -= attackSpeed * 0.20;
+        }   else if (passive === 'reaper') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.15;
+            else finalBaseDamage += baseDamage * 0.15;
+        }  else if (passive === 'celestial') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.10;
+            else finalBaseDamage += baseDamage * 0.15;
+            if (type === 'sub') finalRange -= range * 0.10;
+            else  finalRange += range * 0.10;
+        } else if (passive === 'divine') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.20;
+            else finalBaseDamage += baseDamage * 0.20;
+            if (type === 'sub') finalRange -= range * 0.20;
+            else  finalRange += range * 0.20;
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.10;
+            else  finalAttackSpeed -= attackSpeed * 0.10;
+    }     else if (passive === 'golden') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.30;
+            else finalBaseDamage += baseDamage * 0.30;
+    }     else if (passive === 'unique') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.20;
+            else finalBaseDamage += baseDamage * 0.20;
+            if (type === 'sub') finalRange -= range * 0.20;
+            else  finalRange += range * 0.20;
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.10;
+            else  finalAttackSpeed -= attackSpeed * 0.10;
+    }
 
-            // Calcular novo DPS e atualizar a interface
-            newDps = baseDamage * passiveMultiplier / adjustedAttackSpeed;
-            newBaseDamage = baseDamage * passiveMultiplier;
-            document.getElementById('new-dps-result').textContent = `DPS com Passiva: ${newDps.toFixed(2)}`;
-            document.getElementById('new-base-damage-result').textContent = `Dano com Passiva: ${newBaseDamage.toFixed(2)}`;
-            document.getElementById('new-range-result').textContent = `Alcance com Passiva: ${adjustedRange.toFixed(2)}`;
-            document.getElementById('new-attack-speed-result').textContent = `SPA com Passiva: ${adjustedAttackSpeed.toFixed(2)}`;
+    // Aplica a primeira passiva (subtração)
+    if (firstPassive) {
+        applyPassiveEffects(firstPassive, 'sub');
+    }
 
-            document.getElementById('result').style.display = 'block';
-        }
+    // Aplica a segunda passiva (adição)
+    if (secondPassive) {
+        applyPassiveEffects(secondPassive, 'add');
+    }
+
+    // Calculando o DPS (Dano por Segundo)
+    const dps = finalBaseDamage / finalAttackSpeed;
+
+    // Exibindo os resultados
+    document.getElementById('old-dps-result').textContent = `DPS  Antigo: ${baseDamage / attackSpeed}`;
+    document.getElementById('new-dps-result').textContent = `DPS após adição da segunda Passiva: ${dps}`;
+    document.getElementById('base-damage-result').textContent = `Dano antigo: ${baseDamage}`;
+    document.getElementById('new-base-damage-result').textContent = `Dano com a adição de Passiva: ${finalBaseDamage}`;
+    document.getElementById('range-result').textContent = `Range Antigo: ${range}`;
+    document.getElementById('new-range-result').textContent = `Range com a adição de Passiva: ${finalRange}`;
+    document.getElementById('attack-speed-result').textContent = `SPA Antigo: ${attackSpeed}`;
+    document.getElementById('new-attack-speed-result').textContent = `SPA com a adição de Passiva: ${finalAttackSpeed}`;
+
+    document.getElementById('result').style.display = 'block';
+}
+
+     }    
     </script>
 </body>
 </html>
