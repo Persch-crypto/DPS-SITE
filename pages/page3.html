@@ -30,20 +30,29 @@
             font-size: 2.5em;
             color: #ffffff;
         }
-
         .back-button {
             position: absolute;
-            top: 25px;
-            left: 25px;
-            font-size: 1.5em;
-            color: #1d0303;
+            top: 40px;
+            left: 20px;   
             background: none;
             border: none;
             cursor: pointer;
             transition: transform 0.3s;
-            border: #e22626 2px solid;
+
+           
+            /*border: #e22626 2px solid;
+            font-size: 1.5em;
+            color: #1d0303;
             border-radius: 50%;
             background-color: #ec0909;
+             background-image: url("seta.png");
+            */
+        }
+        #seta{
+            width: 50px;
+            height: 50px;
+            margin-left: 50px;
+            margin-top: -10px;
         }
 
         .back-button:hover {
@@ -189,7 +198,9 @@
 <body>
     <div class="header">
         <h1>Calculadora de DPS com Passivas</h1>
-        <button class="back-button" onclick="window.location.href='../index.html'">X</button>
+        <button class="back-button" onclick="window.location.href='../index.html'"> 
+            <img src="../images/seta.png" alt="" id="seta" >
+        </button>
     </div>
 
     

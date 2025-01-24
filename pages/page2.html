@@ -32,19 +32,30 @@
             margin: 0;
         }
 
+    
         .back-button {
             position: absolute;
             top: 40px;
-            left: 20px;
-            font-size: 1.5em;
-            color: #1d0303;
+            left: 20px;   
             background: none;
             border: none;
             cursor: pointer;
             transition: transform 0.3s;
-            border: #e22626 2px solid;
+
+           
+            /*border: #e22626 2px solid;
+            font-size: 1.5em;
+            color: #1d0303;
             border-radius: 50%;
             background-color: #ec0909;
+             background-image: url("seta.png");
+            */
+        }
+        #seta{
+            width: 50px;
+            height: 50px;
+            margin-left: 50px;
+            margin-top: -10px;
         }
 
         .back-button:hover {
@@ -56,18 +67,21 @@
             border-radius: 10px;
             padding: 30px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin-top: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: row;
+
             justify-content: space-between;
+            
         }
 
         .form-section {
             width: 45%;
+            margin-left: 3%;
         }
-
+        .junto{
+            display: flex;
+        }
         .form-container h2 {
             color: #ffffff;
             margin-bottom: 20px;
@@ -117,8 +131,10 @@
             font-size: 1.3em;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
-            width: 80%;
+            width: 90%;
+      margin-left: 4%;
             margin-top: 20px;
+            
         }
 
         .calculate-button:hover {
@@ -157,90 +173,42 @@
 </head>
 <body>
     <div class="header">
-        <button class="back-button" onclick="window.location.href='../index.html'">X</button>
+        <button class="back-button" onclick="window.location.href='../index.html'"> 
+            <img src="../images/seta.png" alt="" id="seta" >
+        </button>
         <h1>COMPARATION</h1>
     </div>
 
     <div class="form-container">
         <!-- Personagem 1 -->
-        <div class="form-section">
-            <h2>Character 1</h2>
-            <form id="dps-form1">
-                <div class="form-group">
-                    <label for="base-damage1">Dano Base</label>
-                    <input type="number" id="base-damage1" name="base-damage1" required>
-                </div>
+        <div class="junto">
+            <div class="form-section">
+                <h2>Character 1</h2>
+                <form id="dps-form1">
+                    <div class="form-group">
+                        <label for="base-damage1">Dano Base</label>
+                        <input type="number" id="base-damage1" name="base-damage1" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="attack-speed1">Velocidade de Ataque (s)</label>
-                    <input type="number" id="attack-speed1" name="attack-speed1" step="0.01" required>
-                </div>
+                    <div class="form-group">
+                        <label for="attack-speed1">Velocidade de Ataque (s)</label>
+                        <input type="number" id="attack-speed1" name="attack-speed1" step="0.01" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="ticks1">Ticks do Efeito</label>
-                    <input type="number" id="ticks1" name="ticks1" required>
-                </div>
+                    <div class="form-group">
+                        <label for="ticks1">Ticks do Efeito</label>
+                        <input type="number" id="ticks1" name="ticks1" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="effect-percentage1">Porcentagem por Tick (%)</label>
-                    <input type="number" id="effect-percentage1" name="effect-percentage1" step="0.1">
-                </div>
+                    <div class="form-group">
+                        <label for="effect-percentage1">Porcentagem por Tick (%)</label>
+                        <input type="number" id="effect-percentage1" name="effect-percentage1" step="0.1">
+                    </div>
 
-                <div class="form-group">
-                    <label for="relic1">Escolha uma Relíquia</label>
-                    <select id="relic1" name="relic1">
-                        <option value="">Selecione uma Relíquia</option>
-                    <option value="relic1">Infernal Gaze (5% element type)</option>
-                    <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
-                    <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
-                    <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
-                    <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
-                    <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
-                    <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
-                    <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="critical-chance1">Chance de Crítico (%)</label>
-                    <input type="number" id="critical-chance1" name="critical-chance1" step="0.1">
-                </div>
-
-                <div class="form-group">
-                    <label for="critical-damage1">Dano Crítico (%)</label>
-                    <input type="number" id="critical-damage1" name="critical-damage1" step="0.1">
-                </div>
-            </form>
-        </div>
-
-        <!-- Personagem 2 -->
-        <div class="form-section">
-            <h2>Character 2</h2>
-            <form id="dps-form2">
-                <div class="form-group">
-                    <label for="base-damage2">Dano Base</label>
-                    <input type="number" id="base-damage2" name="base-damage2" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="attack-speed2">Velocidade de Ataque (s)</label>
-                    <input type="number" id="attack-speed2" name="attack-speed2" step="0.01" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="ticks2">Ticks do Efeito</label>
-                    <input type="number" id="ticks2" name="ticks2" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="effect-percentage2">Porcentagem por Tick (%)</label>
-                    <input type="number" id="effect-percentage2" name="effect-percentage2" step="0.1">
-                </div>
-
-                <div class="form-group">
-                    <label for="relic2">Escolha uma Relíquia</label>
-                    <select id="relic2" name="relic2">
-                        <option value="">Selecione uma Relíquia</option>
+                    <div class="form-group">
+                        <label for="relic1">Escolha uma Relíquia</label>
+                        <select id="relic1" name="relic1">
+                            <option value="">Selecione uma Relíquia</option>
                         <option value="relic1">Infernal Gaze (5% element type)</option>
                         <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
                         <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
@@ -249,23 +217,81 @@
                         <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
                         <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
                         <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
-                    </select>
-                </div>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="critical-chance2">Chance de Crítico (%)</label>
-                    <input type="number" id="critical-chance2" name="critical-chance2" step="0.1">
-                </div>
+                    <div class="form-group">
+                        <label for="critical-chance1">Chance de Crítico (%)</label>
+                        <input type="number" id="critical-chance1" name="critical-chance1" step="0.1">
+                    </div>
 
-                <div class="form-group">
-                    <label for="critical-damage2">Dano Crítico (%)</label>
-                    <input type="number" id="critical-damage2" name="critical-damage2" step="0.1">
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label for="critical-damage1">Dano Crítico (%)</label>
+                        <input type="number" id="critical-damage1" name="critical-damage1" step="0.1">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Personagem 2 -->
+            <div class="form-section">
+                <h2>Character 2</h2>
+                <form id="dps-form2">
+                    <div class="form-group">
+                        <label for="base-damage2">Dano Base</label>
+                        <input type="number" id="base-damage2" name="base-damage2" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attack-speed2">Velocidade de Ataque (s)</label>
+                        <input type="number" id="attack-speed2" name="attack-speed2" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticks2">Ticks do Efeito</label>
+                        <input type="number" id="ticks2" name="ticks2" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="effect-percentage2">Porcentagem por Tick (%)</label>
+                        <input type="number" id="effect-percentage2" name="effect-percentage2" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="relic2">Escolha uma Relíquia</label>
+                        <select id="relic2" name="relic2">
+                            <option value="">Selecione uma Relíquia</option>
+                            <option value="relic1">Infernal Gaze (5% element type)</option>
+                            <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
+                            <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
+                            <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
+                            <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
+                            <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
+                            <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
+                            <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="critical-chance2">Chance de Crítico (%)</label>
+                        <input type="number" id="critical-chance2" name="critical-chance2" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="critical-damage2">Dano Crítico (%)</label>
+                        <input type="number" id="critical-damage2" name="critical-damage2" step="0.1">
+                    </div>
+                
+                
+                </form>
+                
+            
+            </div>
         </div>
-    </div>
+        <div>
+            <button class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
+        </div>
+  </div>
 
-    <button class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
 
     <div id="result" class="result-container">
         <p id="dps-result">DPS Calculado: </p>
