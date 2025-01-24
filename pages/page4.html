@@ -335,46 +335,35 @@
             if (type === 'sub') finalRange -= range * 0.125;
             else finalRange += range * 0.125;
         } else if (passive === 'range3') {
-            if (type === 'sub') finalRange -= range * 0.15;
-            else finalRange += range * 0.15;
-        }  else if (passive === 'adept') {
-            if (type === 'sub') finalRange -= range * 0.15;
-            else finalRange += range * 0.15;
-        }  else if (passive === 'culling') {
-            if (type === 'sub') finalBaseDamage -= baseDamage * 0.20;
-            else finalBaseDamage += baseDamage * 0.2;
-        }   else if (passive === 'sniper') {
-            if (type === 'sub') finalRange -= range * 0.25;
-            else finalRange += range * 0.25;
-        }  else if (passive === 'godspeed') {
-            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.20;
-            else finalAttackSpeed -= attackSpeed * 0.20;
-        }   else if (passive === 'reaper') {
-            if (type === 'sub') finalBaseDamage -= baseDamage * 0.15;
-            else finalBaseDamage += baseDamage * 0.15;
-        }  else if (passive === 'celestial') {
-            if (type === 'sub') finalBaseDamage -= baseDamage * 0.10;
-            else finalBaseDamage += baseDamage * 0.15;
-            if (type === 'sub') finalRange -= range * 0.10;
-            else  finalRange += range * 0.10;
-        } else if (passive === 'divine') {
-            if (type === 'sub') finalBaseDamage -= baseDamage * 0.20;
-            else finalBaseDamage += baseDamage * 0.20;
-            if (type === 'sub') finalRange -= range * 0.20;
-            else  finalRange += range * 0.20;
-            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.10;
-            else  finalAttackSpeed -= attackSpeed * 0.10;
-    }     else if (passive === 'golden') {
-            if (type === 'sub') finalBaseDamage -= baseDamage * 0.30;
-            else finalBaseDamage += baseDamage * 0.30;
-    }     else if (passive === 'unique') {
-            if (type === 'sub') finalBaseDamage -= baseDamage * 0.20;
-            else finalBaseDamage += baseDamage * 0.20;
-            if (type === 'sub') finalRange -= range * 0.20;
-            else  finalRange += range * 0.20;
-            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.10;
-            else  finalAttackSpeed -= attackSpeed * 0.10;
-    }
+            if (type === 'sub') 
+            finalRange -= range * 0.15;
+            else 
+            finalRange += range * 0.15;
+        } else if (passive === 'sniper') {
+            if (type === 'sub') 
+            finalRange -= range * 0.25;
+            else 
+            finalRange += range * 0.25;
+        } else if (passive === 'godspeed') {
+            if (type === 'sub') 
+            finalAttackSpeed += attackSpeed * 0.20;
+            else 
+            finalAttackSpeed -= attackSpeed * 0.20;
+        } else if (passive === 'reaper') {
+            if (type === 'sub') 
+            finalBaseDamage -= baseDamage * 0.15;
+            else 
+            finalBaseDamage += baseDamage * 0.15;
+        } else if (passive === 'celestial') {
+            if (type === 'sub') {
+                finalBaseDamage -= baseDamage * 0.10;
+                finalRange -= range * 0.10;
+            } else {
+                finalBaseDamage += baseDamage * 0.10;
+                finalRange += range * 0.10;
+            }
+        }
+
 
     // Aplica a primeira passiva (subtração)
     if (firstPassive) {
@@ -402,7 +391,7 @@
     document.getElementById('result').style.display = 'block';
 }
 
-     }    
+        
     </script>
 </body>
 </html>
