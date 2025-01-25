@@ -205,7 +205,7 @@
 <body>
     <div class="header">
         <h1>Calculadora de DPS com Passivas</h1>
-        <button class="back-button" onclick="window.location.href='../index.html'"> 
+        <button class="back-button" onclick="window.location.href='page5.html'"> 
             <img src="../images/seta.png" alt="" id="seta" >
         </button>
     </div>
@@ -234,6 +234,7 @@
                 <input type="number" id="range" name="range" required>
                 <img src="../images/range.png" alt="Dano Base">
             </div>
+            <br>
 
             <div class="form-group">
                 <label for="passive">Escolha uma Passiva</label>
@@ -259,11 +260,12 @@
                     <option value="unique" class="orange-passive-5">Unique (+300% dano, -10% SPA, +10% alcance)</option>
                 </select>
             </div>
+            <br>
 
             <button type="button" class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
         </form>
 
-        <a href="page4.html" class="page4"><p>Clique aqui se seu personagem ja tem uma passiva</p></a>
+       <!-- <a href="page4.html" class="page4"><p>Clique aqui se seu personagem ja tem uma passiva</p></a> -->
 
         <div id="result" class="result-container" style="display: none;">
             <p id="old-dps-result" class="old-dps">DPS Antigo: </p>
