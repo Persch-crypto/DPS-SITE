@@ -169,6 +169,13 @@
             background-color: #34495e;
             color: #ecf0f1;
         }
+
+        input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+             margin: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -197,12 +204,12 @@
 
                     <div class="form-group">
                         <label for="ticks1">Ticks do Efeito</label>
-                        <input type="number" id="ticks1" name="ticks1" required>
+                        <input type="number" id="ticks1" name="ticks1" placeholder="Número de ticks (ex: 10)" required>
                     </div>
 
                     <div class="form-group">
                         <label for="effect-percentage1">Porcentagem por Tick (%)</label>
-                        <input type="number" id="effect-percentage1" name="effect-percentage1" step="0.1">
+                        <input type="number" id="effect-percentage1" name="effect-percentage1" step="0.1" placeholder="Porcentagem por tick">
                     </div>
 
                     <div class="form-group">
@@ -248,12 +255,12 @@
 
                     <div class="form-group">
                         <label for="ticks2">Ticks do Efeito</label>
-                        <input type="number" id="ticks2" name="ticks2" required>
+                        <input type="number" id="ticks2" name="ticks2"  placeholder="Número de ticks (ex: 10)" required>
                     </div>
 
                     <div class="form-group">
                         <label for="effect-percentage2">Porcentagem por Tick (%)</label>
-                        <input type="number" id="effect-percentage2" name="effect-percentage2" step="0.1">
+                        <input type="number" id="effect-percentage2" name="effect-percentage2" step="0.1" placeholder="Porcentagem por tick">
                     </div>
 
                     <div class="form-group">
