@@ -287,13 +287,9 @@
 
     
         <div id="result" class="result-container" style="display: none;">
-            <p id="old-dps-result" class="old-dps">DPS Antigo: </p>
             <p id="new-dps-result">DPS com Passiva: </p>
-            <p id="base-damage-result" class="old-dps">Dano sem Passiva: </p>
             <p id="new-base-damage-result">Dano com Passiva: </p>
-            <p id="range-result" class="old-dps">Alcance Antigo: </p>
             <p id="new-range-result">Alcance com Passiva: </p>
-            <p id="attack-speed-result" class="old-dps">SPA Antigo: </p>
             <p id="new-attack-speed-result">SPA com Passiva: </p>
         </div>
     </div>
@@ -306,134 +302,136 @@
     <script>
         // Função principal para calcular o DPS
         function calculateDPS() {
-            // Obtendo os valores inseridos pelo usuário
-            const baseDamage = parseFloat(document.getElementById('base-damage').value);
-            const attackSpeed = parseFloat(document.getElementById('attack-speed').value);
-            const range = parseFloat(document.getElementById('range').value);
-    
-            // Pegando as passivas escolhidas
-            const firstPassive = document.getElementById('passive').value;
-            const secondPassive = document.getElementById('second-passive').value;
-    
-            // Função para aplicar os efeitos da primeira passiva
-            function applyFirstPassive(passive) {
-                let modBaseDamage = baseDamage;
-                let modAttackSpeed = attackSpeed;
-                let modRange = range;
-    
-                if (passive === 'superior1') {
-                    modBaseDamage += baseDamage * 0.10;
-                } else if (passive === 'superior2') {
-                    modBaseDamage += baseDamage * 0.125;
-                } else if (passive === 'superior3') {
-                    modBaseDamage += baseDamage * 0.15;
-                } else if (passive === 'nimble1') {
-                    modAttackSpeed += attackSpeed * 0.05;
-                } else if (passive === 'nimble2') {
-                    modAttackSpeed += attackSpeed * 0.075;
-                } else if (passive === 'nimble3') {
-                    modAttackSpeed += attackSpeed * 0.12;
-                } else if (passive === 'range1') {
-                    modRange += range * 0.10;
-                } else if (passive === 'range2') {
-                    modRange += range * 0.125;
-                } else if (passive === 'range3') {
-                    modRange += range * 0.15;
-                } else if (passive === 'sniper') {
-                    modRange += range * 0.25;
-                } else if (passive === 'godspeed') {
-                    modAttackSpeed += attackSpeed * 0.20;
-                } else if (passive === 'reaper') {
-                    modBaseDamage += baseDamage * 0.15;
-                } else if (passive === 'celestial') {
-                    modBaseDamage += baseDamage * 0.10;
-                    modRange += range * 0.10;
-                } else if (passive === 'divine') {
-                    modBaseDamage += baseDamage * 0.15;
-                    modAttackSpeed -= attackSpeed * 0.10;
-                    modRange += range * 0.20;
-                } else if (passive === 'unique') {
-                    modBaseDamage += baseDamage * 3.0;
-                    modAttackSpeed -= attackSpeed * 0.10;
-                    modRange += range * 0.10;
-                } else if (passive === 'golden') {
-                    modBaseDamage += baseDamage * 0.30;
-                }
-    
-                return { modBaseDamage, modAttackSpeed, modRange };
-            }
-    
-            // Função para aplicar os efeitos da segunda passiva
-            function applySecondPassive(passive) {
-                let modBaseDamage = baseDamage;
-                let modAttackSpeed = attackSpeed;
-                let modRange = range;
-    
-                if (passive === 'superior1') {
-                    modBaseDamage += baseDamage * 0.10;
-                } else if (passive === 'superior2') {
-                    modBaseDamage += baseDamage * 0.125;
-                } else if (passive === 'superior3') {
-                    modBaseDamage += baseDamage * 0.15;
-                } else if (passive === 'nimble1') {
-                    modAttackSpeed += attackSpeed * 0.05;
-                } else if (passive === 'nimble2') {
-                    modAttackSpeed += attackSpeed * 0.075;
-                } else if (passive === 'nimble3') {
-                    modAttackSpeed += attackSpeed * 0.12;
-                } else if (passive === 'range1') {
-                    modRange += range * 0.10;
-                } else if (passive === 'range2') {
-                    modRange += range * 0.125;
-                } else if (passive === 'range3') {
-                    modRange += range * 0.15;
-                } else if (passive === 'sniper') {
-                    modRange += range * 0.25;
-                } else if (passive === 'godspeed') {
-                    modAttackSpeed += attackSpeed * 0.20;
-                } else if (passive === 'reaper') {
-                    modBaseDamage += baseDamage * 0.15;
-                } else if (passive === 'celestial') {
-                    modBaseDamage += baseDamage * 0.10;
-                    modRange += range * 0.10;
-                } else if (passive === 'divine') {
-                    modBaseDamage += baseDamage * 0.15;
-                    modAttackSpeed -= attackSpeed * 0.10;
-                    modRange += range * 0.20;
-                } else if (passive === 'unique') {
-                    modBaseDamage += baseDamage * 3.0;
-                    modAttackSpeed -= attackSpeed * 0.10;
-                    modRange += range * 0.10;
-                } else if (passive === 'golden') {
-                    modBaseDamage += baseDamage * 0.30;
-                }
-    
-                return { modBaseDamage, modAttackSpeed, modRange };
-            }
-    
-            // Aplicando a primeira passiva
-            const { modBaseDamage: firstModBaseDamage, modAttackSpeed: firstModAttackSpeed, modRange: firstModRange } = applyFirstPassive(firstPassive);
-            const dpsInitial = firstModBaseDamage / firstModAttackSpeed;
-    
-            // Aplicando a segunda passiva
-            const { modBaseDamage: secondModBaseDamage, modAttackSpeed: secondModAttackSpeed, modRange: secondModRange } = applySecondPassive(secondPassive);
-            const dpsFinal = secondModBaseDamage / secondModAttackSpeed;
-    
-            // Exibindo os resultados
-            document.getElementById('old-dps-result').textContent = `DPS Inicial (First Passive): ${dpsInitial.toFixed(2)}`;
-            document.getElementById('new-dps-result').textContent = `DPS Final (Second Passive): ${dpsFinal.toFixed(2)}`;
-            document.getElementById('base-damage-result').textContent = `Dano Inicial: ${firstModBaseDamage.toFixed(2)}`;
-            document.getElementById('new-base-damage-result').textContent = `Dano Final: ${secondModBaseDamage.toFixed(2)}`;
-            document.getElementById('range-result').textContent = `Alcance Inicial: ${firstModRange.toFixed(2)}`;
-            document.getElementById('new-range-result').textContent = `Alcance Final: ${secondModRange.toFixed(2)}`;
-            document.getElementById('attack-speed-result').textContent = `SPA Inicial: ${firstModAttackSpeed.toFixed(2)}`;
-            document.getElementById('new-attack-speed-result').textContent = `SPA Final: ${secondModAttackSpeed.toFixed(2)}`;
-    
-            document.getElementById('result').style.display = 'block';
+    // Obtendo os valores inseridos pelo usuário
+    const baseDamage = parseFloat(document.getElementById('base-damage').value);
+    const attackSpeed = parseFloat(document.getElementById('attack-speed').value);
+    const range = parseFloat(document.getElementById('range').value);
+
+    // Pegando as passivas escolhidas
+    const firstPassive = document.getElementById('passive').value;
+    const secondPassive = document.getElementById('second-passive').value;
+
+    // Variáveis para armazenar os valores alterados
+    let finalBaseDamage = baseDamage;
+    let finalAttackSpeed = attackSpeed;
+    let finalRange = range;
+
+    // Função para aplicar a subtração de passivas
+    function applyPassiveEffects(passive, type) {
+        if (passive === 'superior1') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.10;
+            else finalBaseDamage += baseDamage * 0.10;
+        } else if (passive === 'superior2') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.125;
+            else finalBaseDamage += baseDamage * 0.125;
+        } else if (passive === 'superior3') {
+            if (type === 'sub') finalBaseDamage -= baseDamage * 0.15;
+            else finalBaseDamage += baseDamage * 0.15;
+        } else if (passive === 'nimble1') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.05;
+            else finalAttackSpeed -= attackSpeed * 0.05;
+        } else if (passive === 'nimble2') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.075;
+            else finalAttackSpeed -= attackSpeed * 0.075;
+        } else if (passive === 'nimble3') {
+            if (type === 'sub') finalAttackSpeed += attackSpeed * 0.12;
+            else finalAttackSpeed -= attackSpeed * 0.12;
+        } else if (passive === 'range1') {
+            if (type === 'sub') finalRange -= range * 0.10;
+            else finalRange += range * 0.10;
+        } else if (passive === 'range2') {
+            if (type === 'sub') finalRange -= range * 0.125;
+            else finalRange += range * 0.125;
+        } else if (passive === 'range3') {
+            if (type === 'sub') 
+            finalRange -= range * 0.15;
+            else 
+            finalRange += range * 0.15;
+        } else if (passive === 'sniper') {
+            if (type === 'sub') 
+            finalRange -= range * 0.25;
+            else 
+            finalRange += range * 0.25;
+        } else if (passive === 'godspeed') {
+            if (type === 'sub') 
+            finalAttackSpeed += attackSpeed * 0.20;
+            else 
+            finalAttackSpeed -= attackSpeed * 0.20;
+        } else if (passive === 'reaper') {
+            if (type === 'sub') 
+            finalBaseDamage -= baseDamage * 0.15;
+            else 
+            finalBaseDamage += baseDamage * 0.15;
+        } else if (passive === 'celestial') {
+        if (type === 'sub') {
+            finalBaseDamage -= baseDamage * 0.10;  // -10% de dano
+            finalRange -= range * 0.10;  // -10% de alcance
+        } else {
+            finalBaseDamage += baseDamage * 0.10;  // +10% de dano
+            finalRange += range * 0.10;  // +10% de alcance
+            // Adicionando o efeito de dano verdadeiro
+            // Como esse tipo de dano pode ser específico de como o jogo lida com isso, você pode criar uma variável para "dano verdadeiro" 
+            // e depois adicionar uma lógica adicional para aplicar esse efeito.
+            // Exemplo de aplicação fictícia (você deve adaptar isso conforme seu modelo de jogo):
+            const trueDamageBonus = baseDamage * 0.20;
+            finalBaseDamage += trueDamageBonus;
         }
+    } else if (passive === 'divine') {
+        if (type === 'sub') {
+            finalBaseDamage -= baseDamage * 0.15;  // -15% de dano
+            finalAttackSpeed += attackSpeed * 0.10;  // -10% de velocidade de ataque
+            finalRange -= range * 0.20;
+        } else {
+            finalBaseDamage += baseDamage * 0.15;  // +15% de dano
+            finalAttackSpeed -= attackSpeed * 0.10;  // +10% de velocidade de ataque
+            finalRange += range * 0.20;
+        }
+    } else if (passive === 'unique') {
+        if (type === 'sub') {
+            finalBaseDamage -= baseDamage / 3;  // -300% de dano
+            finalAttackSpeed += attackSpeed * 0.10;  // -10% de velocidade de ataque
+            finalRange -= range * 0.10;  // -10% de alcance
+        } else {
+            finalBaseDamage += baseDamage * 3.0;  // +25% de dano
+            finalAttackSpeed -= attackSpeed * 0.10;  // +20% de velocidade de ataque
+            finalRange += range * 0.10;  // +20% de alcance
+        }
+      } else if (passive === 'golden') {
+        if (type === 'sub'){
+            finalBaseDamage -= baseDamage * 0.30;
+        } else {
+            finalBaseDamage += baseDamage * 0.30;
+        }
+      }
+    
+    }
+    // Aplica a primeira passiva (subtração)
+    if (firstPassive) {
+        applyPassiveEffects(firstPassive, 'sub');
+
+    }
+
+    // Aplica a segunda passiva (adição)
+    if (secondPassive) {
+        applyPassiveEffects(secondPassive, 'add');
+    }
+
+    // Calculando o DPS (Dano por Segundo)
+    const dps = finalBaseDamage / finalAttackSpeed;
+    const dpsinicial = baseDamage * firstPassive;
+
+
+
+    // Exibindo os resultados
+    document.getElementById('new-dps-result').textContent = `DPS após adição da segunda Passiva ---> ${dps.toFixed (2)}`;
+    document.getElementById('new-base-damage-result').textContent = `Dano com a adição de Passiva ---> ${finalBaseDamage.toFixed(2)}`;
+    document.getElementById('new-range-result').textContent = `Range com a adição de Passiva ---> ${finalRange.toFixed(2)}`;
+    document.getElementById('new-attack-speed-result').textContent = `SPA com a adição de Passiva ---> ${finalAttackSpeed.toFixed(2)}`;
+
+    document.getElementById('result').style.display = 'block';
+}
+ 
+        
     </script>
-    
-    
-    
 </body>
 </html>
