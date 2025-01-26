@@ -316,9 +316,9 @@
         // Função principal para calcular o DPS
         function calculateDPS() {
     // Obtendo os valores inseridos pelo usuário
-    const baseDamage = parseFloat(document.getElementById('base-damage').value);
-    const attackSpeed = parseFloat(document.getElementById('attack-speed').value);
-    const range = parseFloat(document.getElementById('range').value);
+    const baseDamage = parseFloat(document.getElementById('base-damage').value) || 0;
+    const attackSpeed = parseFloat(document.getElementById('attack-speed').value) || 0;
+    const range = parseFloat(document.getElementById('range').value) || 0;
 
     // Pegando as passivas escolhidas
     const firstPassive = document.getElementById('passive').value;

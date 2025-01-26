@@ -249,6 +249,30 @@
  
 
     <script>
+
+                const button1 = document.getElementById("button1");
+                const button3 = document.getElementById("button3");
+
+
+
+                    let button1Selected = false;
+                    let button3Selected = false;
+                    let buffMultiplier = 1;  // Inicializa com 100%
+
+                        // Função para alternar a seleção dos botões
+                        function toggleButton(button) {
+                            if (button.classList.contains("selected")) {
+                                button.classList.remove("selected"); // Desmarca o botão
+                                if (button === button1) button1Selected = false;
+                                if (button === button3) button3Selected = false;
+                            } else {
+                                button.classList.add("selected"); // Marca o botão
+                                if (button === button1) button1Selected = true;
+                                if (button === button3) button3Selected = true;
+                            }
+                        }
+
+
         function calculateDPS() {
             const baseDamage = parseFloat(document.getElementById('base-damage').value);
             const attackSpeed = parseFloat(document.getElementById('attack-speed').value);
@@ -291,12 +315,26 @@
                     relicMultiplier = 1; // Nenhuma relíquia escolhida
                     break;
             }
+            
 
-            const dps = (baseDamage * effectMultiplier * criticalMultiplier * relicMultiplier) / attackSpeed;
+            if (button1Selected && button3Selected) {
+                buffMultiplier = 3.0;  // Ambos os botões selecionados = 300%
+                } else if (button1Selected || button3Selected) {
+                buffMultiplier = 2.0;  // Apenas um botão selecionado = 200%
+                } else {
+                buffMultiplier = 1.0;  // Nenhum botão selecionado = 100%
+                }
+
+
+            
+
+            const dps = (baseDamage * effectMultiplier * criticalMultiplier * relicMultiplier * buffMultiplier) / attackSpeed;
 
             document.getElementById('result').style.display = 'block';
             document.getElementById('dps-result').textContent = `DPS Calculado: ${dps.toFixed(2)}`;
         }
+
+            
     </script>
 </body>
 
