@@ -18,7 +18,9 @@
         min-height: 100vh;
         overflow-x: hidden
     }
-
+    h1{
+        font-family: cursive;
+    }
     #carregar{
         align-items: center;
         display: flex;
