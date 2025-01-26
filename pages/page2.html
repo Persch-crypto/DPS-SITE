@@ -4,203 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Somatudo Calculadora</title>
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../style/page2css.css">
     <style>
         
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffdab9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-         
-            overflow-x: hidden
-        }
-        /*tela carregamento*/
-        #carregar{
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        min-height: 90vh;
-        transform: scale(3);
-        }
-        #carrega{
-        animation: rodar 3s infinite;
-        border: 4px solid #fa9063;
-        border-right-color: #ee743f;
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
-        }
-        @keyframes rodar {
-        to{
-        transform: rotate(3turn);
-
-        }
-        }
-
-
-        #load{
-        position:fixed;
-        top:0;
-        left:0 ;
-        right:0;
-        bottom:0;
-        background-color:#ffdab9;
-        }
-        .header {
-            width: 100%;
-            padding: 30px 0;
-            background-color: #f6a685;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            color: #ffffff;
-            margin: 0;
-        }
-
-    
-        .back-button {
-            position: absolute;
-            top: 40px;
-            left: 20px;   
-            background: none;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s;
-
-           
-            /*border: #e22626 2px solid;
-            font-size: 1.5em;
-            color: #1d0303;
-            border-radius: 50%;
-            background-color: #ec0909;
-             background-image: url("seta.png");
-            */
-        }
-        #seta{
-            width: 50px;
-            height: 50px;
-            margin-left: 50px;
-            margin-top: -10px;
-        }
-
-        .back-button:hover {
-            transform: scale(1.1);
-        }
-
-        .form-container {
-            background: #f6a685;
-            border-radius: 10px;
-            padding: 30px;
-            width: 100%;
-            max-width: 1300px;
-            margin-top: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-           
-           margin-top: 3%;
-            
-        }
-
-        .form-section {
-            width: 45%;
-            margin-left: 3%;
-        }
-        .junto{
-            display: flex;
-        }
-        .form-container h2 {
-            color: #ffffff;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .form-group label {
-            color: #ffdab9;
-            font-size: 1.2em;
-            flex: 1;
-            text-align: left;
-            margin-right: 10px;
-        }
-
-        .form-group input, .form-group select {
-            width: 70%;
-            padding: 12px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 8px;
-            background: #ffdab9;
-            color: #3b3a3a;
-            text-align: center;
-        }
-
-        .form-group img {
-            width: 30px;
-            height: 30px;
-            margin-left: 10px;
-        }
-
-        .calculate-button {
-            background: #2764ae;
-            color: #ffffff;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 25px;
-            font-size: 1.3em;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 90%;
-      margin-left: 4%;
-            margin-top: 20px;
-            
-        }
-
-        .calculate-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .result-container {
-            margin-top: 20px;
-            padding: 20px;
-            background: #ffdab9;
-            border-radius: 10px;
-            color: #ffffff;
-            font-size: 1.5em;
-            text-align: center;
-            display: none;
-        }
-
-        select {
-            padding: 15px;
-            font-size: 1.2em;
-            border-radius: 8px;
-            background-color: #34495e;
-            color: #ecf0f1;
-        }
-
-        input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-             margin: 0;
-        }
+        
 
     </style>
 </head>
@@ -212,97 +23,45 @@
     </div>
   </div>
 <body>
-    <div class="header">
-        <br>
-        <h1>Comparação</h1>
-        <br>
-        <button class="back-button" onclick="window.location.href='../index.html'"> 
-            <img src="../images/seta.png" alt="" id="seta" >
-        </button>
-     
-    </div>
+        <div class="header">
+            <br>
+            <h1>Comparação</h1>
+            <br>
+            <button class="back-button" onclick="window.location.href='../index.html'"> 
+                <img src="../images/seta.png" alt="" id="seta" >
+            </button>
+        </div>
 
-    <div class="form-container">
-        <!-- Personagem 1 -->
-        <div class="junto">
-            <div class="form-section">
-                <h2>Personagem 1</h2>
-                <form id="dps-form1">
-                    <div class="form-group">
-                        <label for="base-damage1">Dano Base</label>
-                        <input type="number" id="base-damage1" name="base-damage1" required>
-                    </div>
+    <main>
+        <div class="form-container">
+            <div class="junto">
+                <div class="form-section">
+                    <h2>Personagem 1</h2>
+                    <form id="dps-form1">
+                        <div class="form-group">
+                            <label for="base-damage1">Dano Base</label>
+                            <input type="number" id="base-damage1" name="base-damage1" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="attack-speed1">Velocidade de Ataque (s)</label>
-                        <input type="number" id="attack-speed1" name="attack-speed1" step="0.01" required>
-                    </div>
+                        <div class="form-group">
+                            <label for="attack-speed1">Velocidade de Ataque (s)</label>
+                            <input type="number" id="attack-speed1" name="attack-speed1" step="0.01" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="ticks1">Ticks do Efeito</label>
-                        <input type="number" id="ticks1" name="ticks1" placeholder="Número de ticks (ex: 10)" required>
-                    </div>
+                        <div class="form-group">
+                            <label for="ticks1">Ticks do Efeito</label>
+                            <input type="number" id="ticks1" name="ticks1" placeholder="Número de ticks (ex: 10)" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="effect-percentage1">Porcentagem por Tick (%)</label>
-                        <input type="number" id="effect-percentage1" name="effect-percentage1" step="0.1" placeholder="Porcentagem por tick">
-                    </div>
+                        <div class="form-group">
+                            <label for="effect-percentage1">Porcentagem por Tick (%)</label>
+                            <input type="number" id="effect-percentage1" name="effect-percentage1" step="0.1" placeholder="Porcentagem por tick">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="relic1">Escolha uma Relíquia</label>
-                        <select id="relic1" name="relic1">
-                            <option value="">Selecione uma Relíquia</option>
-                        <option value="relic1">Infernal Gaze (5% element type)</option>
-                        <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
-                        <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
-                        <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
-                        <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
-                        <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
-                        <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
-                        <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="critical-chance1">Chance de Crítico (%)</label>
-                        <input type="number" id="critical-chance1" name="critical-chance1" step="0.1">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="critical-damage1">Dano Crítico (%)</label>
-                        <input type="number" id="critical-damage1" name="critical-damage1" step="0.1">
-                    </div>
-                </form>
-            </div>
-
-            <!-- Personagem 2 -->
-            <div class="form-section">
-                <h2>Personagem 2</h2>
-                <form id="dps-form2">
-                    <div class="form-group">
-                        <label for="base-damage2">Dano Base</label>
-                        <input type="number" id="base-damage2" name="base-damage2" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="attack-speed2">Velocidade de Ataque (s)</label>
-                        <input type="number" id="attack-speed2" name="attack-speed2" step="0.01" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ticks2">Ticks do Efeito</label>
-                        <input type="number" id="ticks2" name="ticks2"  placeholder="Número de ticks (ex: 10)" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="effect-percentage2">Porcentagem por Tick (%)</label>
-                        <input type="number" id="effect-percentage2" name="effect-percentage2" step="0.1" placeholder="Porcentagem por tick">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="relic2">Escolha uma Relíquia</label>
-                        <select id="relic2" name="relic2">
-                            <option value="">Selecione uma Relíquia</option>
+                        <div class="form-group">
+                            <label for="relic1">Escolha uma Relíquia</label>
+                            <select id="relic1" name="relic1">
+                                <option value="">Selecione uma Relíquia</option>
                             <option value="relic1">Infernal Gaze (5% element type)</option>
                             <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
                             <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
@@ -311,113 +70,89 @@
                             <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
                             <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
                             <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
-                        </select>
-                    </div>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="critical-chance2">Chance de Crítico (%)</label>
-                        <input type="number" id="critical-chance2" name="critical-chance2" step="0.1">
-                    </div>
+                        <div class="form-group">
+                            <label for="critical-chance1">Chance de Crítico (%)</label>
+                            <input type="number" id="critical-chance1" name="critical-chance1" step="0.1">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="critical-damage2">Dano Crítico (%)</label>
-                        <input type="number" id="critical-damage2" name="critical-damage2" step="0.1">
-                    </div>
+                        <div class="form-group">
+                            <label for="critical-damage1">Dano Crítico (%)</label>
+                            <input type="number" id="critical-damage1" name="critical-damage1" step="0.1">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="form-section">
+                    <h2>Personagem 2</h2>
+                    <form id="dps-form2">
+                        <div class="form-group">
+                            <label for="base-damage2">Dano Base</label>
+                            <input type="number" id="base-damage2" name="base-damage2" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attack-speed2">Velocidade de Ataque (s)</label>
+                            <input type="number" id="attack-speed2" name="attack-speed2" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ticks2">Ticks do Efeito</label>
+                            <input type="number" id="ticks2" name="ticks2"  placeholder="Número de ticks (ex: 10)" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="effect-percentage2">Porcentagem por Tick (%)</label>
+                            <input type="number" id="effect-percentage2" name="effect-percentage2" step="0.1" placeholder="Porcentagem por tick">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="relic2">Escolha uma Relíquia</label>
+                            <select id="relic2" name="relic2">
+                                <option value="">Selecione uma Relíquia</option>
+                                <option value="relic1">Infernal Gaze (5% element type)</option>
+                                <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
+                                <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
+                                <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
+                                <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
+                                <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
+                                <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
+                                <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="critical-chance2">Chance de Crítico (%)</label>
+                            <input type="number" id="critical-chance2" name="critical-chance2" step="0.1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="critical-damage2">Dano Crítico (%)</label>
+                            <input type="number" id="critical-damage2" name="critical-damage2" step="0.1">
+                        </div>
+                    
+                    
+                    </form>
+                    
                 
-                
-                </form>
-                
-            
+                </div>
             </div>
+            <div>
+                <button class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
+            </div>
+
+            <div id="result" class="result-container">
+                <p id="dps-result">DPS Calculado: </p>
+                <p id="comparison-result"></p>
+            </div>
+
         </div>
-        <div>
-            <button class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
-        </div>
-
-        <div id="result" class="result-container">
-            <p id="dps-result">DPS Calculado: </p>
-            <p id="comparison-result"></p>
-        </div>
-
-  </div>
-
-
-    
+    </main>
 
     <script>
-        function calculateDPS() {
-            // Personagem 1
-            const baseDamage1 = parseFloat(document.getElementById('base-damage1').value);
-            const attackSpeed1 = parseFloat(document.getElementById('attack-speed1').value);
-            const ticks1 = parseInt(document.getElementById('ticks1').value) || 0;
-            const effectPercentage1 = parseFloat(document.getElementById('effect-percentage1').value) || 0;
-            const criticalChance1 = parseFloat(document.getElementById('critical-chance1').value) || 0;
-            const criticalDamage1 = parseFloat(document.getElementById('critical-damage1').value) || 0;
-            const relic1 = document.getElementById('relic1').value;
-
-            // Personagem 2
-            const baseDamage2 = parseFloat(document.getElementById('base-damage2').value);
-            const attackSpeed2 = parseFloat(document.getElementById('attack-speed2').value);
-            const ticks2 = parseInt(document.getElementById('ticks2').value) || 0;
-            const effectPercentage2 = parseFloat(document.getElementById('effect-percentage2').value) || 0;
-            const criticalChance2 = parseFloat(document.getElementById('critical-chance2').value) || 0;
-            const criticalDamage2 = parseFloat(document.getElementById('critical-damage2').value) || 0;
-            const relic2 = document.getElementById('relic2').value;
-
-            const calculateCharacterDPS = (baseDamage, attackSpeed, ticks, effectPercentage, criticalChance, criticalDamage, relic) => {
-                const criticalMultiplier = 1 + (criticalChance / 100) * (criticalDamage / 100);
-                const effectMultiplier = 1 + (ticks * effectPercentage) / 100;
-                let relicMultiplier = 1;
-
-                switch(relic) {
-                case 'relic1':
-                    relicMultiplier = 1.05; // Exemplo de efeito da Relíquia 1
-                    break;
-                case 'relic2':
-                    relicMultiplier = 1.05; // Exemplo de efeito da Relíquia 2
-                    break;
-                case 'relic3':
-                    relicMultiplier = 1.13; // Exemplo de efeito da Relíquia 3
-                    break;
-                case 'relic4':
-                    relicMultiplier = 1.13; // Exemplo de efeito da Relíquia 4
-                    break;
-                case 'relic5': 
-                    relicMultiplier = 1.13;
-                    break;
-                case 'relic6': 
-                    relicMultiplier = 1.13;
-                    break;
-                case 'relic7': 
-                    relicMultiplier = 1.05;
-                    break;
-                case 'relic8': 
-                    relicMultiplier = 1.05;
-                    break;
-                default:
-                    relicMultiplier = 1; // Nenhuma relíquia escolhida
-                    break;
-            }
-
-
-                return (baseDamage * effectMultiplier * criticalMultiplier * relicMultiplier) / attackSpeed;
-            };
-
-            const dps1 = calculateCharacterDPS(baseDamage1, attackSpeed1, ticks1, effectPercentage1, criticalChance1, criticalDamage1, relic1);
-            const dps2 = calculateCharacterDPS(baseDamage2, attackSpeed2, ticks2, effectPercentage2, criticalChance2, criticalDamage2, relic2);
-
-            const dpsDifference = Math.abs(dps1 - dps2);
-            const superiorCharacter = dps1 > dps2 ? 'Personagem 1' : 'Personagem 2';
-
-            document.getElementById('result').style.display = 'block';
-            document.getElementById('dps-result').textContent = `DPS Personagem 1: ${dps1.toFixed(2)} | DPS Personagem 2: ${dps2.toFixed(2)}`;
-            document.getElementById('comparison-result').textContent = `A diferença de DPS é ${dpsDifference.toFixed(2)}. O ${superiorCharacter} é superior.`;
-        }
-         //load        
-  $(window).on('load', function () {
-    $('#load').delay(800).fadeOut('slow'); 
-    $('body').delay(500).css({'overflow': 'visible'});
-    });
+        function calculateDPS(){let e=parseFloat(document.getElementById("base-damage1").value),t=parseFloat(document.getElementById("attack-speed1").value),l=parseInt(document.getElementById("ticks1").value)||0,a=parseFloat(document.getElementById("effect-percentage1").value)||0,c=parseFloat(document.getElementById("critical-chance1").value)||0,d=parseFloat(document.getElementById("critical-damage1").value)||0,n=document.getElementById("relic1").value,i=parseFloat(document.getElementById("base-damage2").value),r=parseFloat(document.getElementById("attack-speed2").value),s=parseInt(document.getElementById("ticks2").value)||0,g=parseFloat(document.getElementById("effect-percentage2").value)||0,m=parseFloat(document.getElementById("critical-chance2").value)||0,u=parseFloat(document.getElementById("critical-damage2").value)||0,o=document.getElementById("relic2").value,y=(e,t,l,a,c,d,n)=>{let i=1;switch(n){case"relic1":case"relic2":case"relic7":case"relic8":i=1.05;break;case"relic3":case"relic4":case"relic5":case"relic6":i=1.13;break;default:i=1}return e*(1+l*a/100)*(1+c/100*(d/100))*i/t},_=y(e,t,l,a,c,d,n),B=y(i,r,s,g,m,u,o);document.getElementById("result").style.display="block",document.getElementById("dps-result").textContent=`DPS Personagem 1: ${_.toFixed(2)} | DPS Personagem 2: ${B.toFixed(2)}`,document.getElementById("comparison-result").textContent=`A diferen\xe7a de DPS \xe9 ${Math.abs(_-B).toFixed(2)}. O ${_>B?"Personagem 1":"Personagem 2"} \xe9 superior.`}$(window).on("load",function(){$("#load").delay(800).fadeOut("slow"),$("body").delay(500).css({overflow:"visible"})});
     </script>
 </body>
 </html>

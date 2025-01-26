@@ -1,0 +1,234 @@
+    * {    
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+    }
+
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #7c5aa9;
+        color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        overflow-x: hidden
+    }
+
+    #carregar{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 90vh;
+        transform: scale(3);
+    }
+
+    #carrega{
+        animation: rodar 3s infinite;
+        border: 4px solid rgb(178, 101, 230);
+        border-right-color: #683aa3;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        }
+        @keyframes rodar {
+        to{
+            transform: rotate(3turn);
+        }
+            }
+
+
+    #load{
+        position:fixed;
+        top:0;
+        left:0 ;
+        right:0;
+        bottom:0;
+        background-color:#7c5aa9;
+    }
+
+    .header {
+        background-color: #9070b9;
+        width: 100%;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        display: block;
+        position: fixed;
+    }
+
+
+    .header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        color: #ffffff;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 40px;
+        left: 20px;   
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    #seta{
+        width: 50px;
+        height: 50px;
+        margin-left: 50px;
+        margin-top: -10px;
+    }
+
+    .back-button:hover {
+        transform: scale(1.1);
+    }
+
+
+
+    .form-container {
+        background: #9070b9;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px;
+        margin-top: 10%;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        color: #f5f5f5;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #cccccc;
+        
+    }
+    .form-group input, .form-group select {
+    
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        background: #7c5aa9;
+        color: #ffffff;
+    }
+
+    .form-group input{
+        width: 88.5%;
+        
+    }
+    .form-group select{
+        width: 100%;
+        
+    }
+
+    .form-group img {
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    .calculate-button {
+        display: inline-block;
+        background: #2764ae;
+        color: #ffffff;
+        border: none;
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        width: 100%;
+    }
+
+    .calculate-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .result-container {
+        margin-top: 20px;
+        padding: 20px;
+        background: #7c5aa9;
+        border-radius: 10px;
+        color: #ffffff;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+
+    .highlight {
+        color: orange;
+    }
+
+    /* Styled Range Display */
+    .range {
+        font-size: 1.1em;
+        color: #77dd77;
+    }
+
+    .old-dps {
+        text-decoration: line-through;
+        color: #ff6347;
+    }
+
+    .legendary {
+        color: rgb(203, 222, 79);
+    }
+
+    /* Apenas as 5 últimas passivas são laranja */
+    .orange-passive, 
+    .orange-passive-1, 
+    .orange-passive-2, 
+    .orange-passive-3, 
+    .orange-passive-4, 
+    .orange-passive-5 {
+        color: white;
+        animation: rgbColors 3s infinite;
+    }
+
+    /* Passivas com fundo destacado, mas não com a cor laranja */
+    .passive-option {
+        background-color: #3a4f70;
+    }
+
+    .page4 {
+        text-align: center;
+    }
+
+
+    input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    @keyframes rgbColors {
+    0% {
+    color: red;
+    }
+    33% {
+    color: green;
+    }
+    66% {
+    color: blue;
+    }
+    100% {
+    color: red;
+    }
+
+    }

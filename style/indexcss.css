@@ -1,0 +1,174 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #152b5c;
+        color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        min-height: 100vh;
+        transition: background 0.5s linear;
+        overflow-x: hidden;
+    }
+
+    
+        #carregar   {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 90vh;
+        transform: scale(3);
+            }
+
+        #carrega    {
+        animation: rodar 3s infinite;
+        border: 4px solid #8bc9f3;
+        border-right-color: #213f77;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+            }
+
+        @keyframes rodar {
+        to{
+        transform: rotate(3turn);
+
+        }
+            }
+
+
+        #load{
+        position:fixed;
+        top:0;
+        left:0 ;
+        right:0;
+        bottom:0;
+        background-color:#152b5c;
+        }
+
+
+        .header {
+            width: 98%;
+            padding: 30px;
+            background-color: #152749;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px; 
+            border-bottom: 4px solid #8bc9f3; 
+            display: block;
+            position: fixed;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em; 
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .container {
+        
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            text-align: center;
+            margin-left: 40px;
+            margin-top: 7%;
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 18%;
+            width: 190px;
+            height: 190px;
+            background: #1a2334;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .dps {
+            background-image: url('../images/image0_0.jpg');
+        }
+        .passive {
+            background-image: url('../images/comparação.png');
+        }
+        .level {
+            background-image: url('../images/passivedisplay.png');
+        }
+        .other {
+            background-image: url('../images/coming.png');
+        }
+
+        footer {
+            background-color: #152749;
+            color: #888;
+            padding: 20px;
+            width: 97.7%;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #516b91;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .snow span {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
