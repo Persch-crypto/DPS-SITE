@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de DPS - Anime Adventures</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
@@ -17,9 +20,43 @@
             align-items: center;
             position: relative;
             min-height: 100vh;
-            overflow-x: hidden
+            transition: background 0.5s linear;
+            overflow-x: hidden;
         }
 
+        
+/*tela carregamento*/
+        #carregar{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 90vh;
+        transform: scale(3);
+        }
+        #carrega{
+        animation: rodar 3s infinite;
+        border: 4px solid #8bc9f3;
+        border-right-color: #213f77;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        }
+        @keyframes rodar {
+        to{
+        transform: rotate(3turn);
+
+        }
+        }
+
+
+        #load{
+        position:fixed;
+        top:0;
+        left:0 ;
+        right:0;
+        bottom:0;
+        background-color:#152b5c;
+        }
         .header {
             width: 98%;
             padding: 30px;
@@ -29,6 +66,8 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             margin-bottom: 30px; /* Ajustando o espaçamento */
             border-bottom: 4px solid #8bc9f3; /* Uma linha mais simples e elegante */
+            display: block;
+            position: fixed;
         }
 
         .header h1 {
@@ -48,6 +87,7 @@
             padding: 0 20px;
             text-align: center;
             margin-left: 40px;
+            margin-top: 7%;
             text-align: center;
         }
 
@@ -141,6 +181,13 @@
         }
     </style>
 </head>
+<div id="load">
+    <div class="inner">
+      <div id="carregar">
+        <div id="carrega"></div>
+      </div>
+    </div>
+  </div>
 <body>
     
     <div class="snow">
@@ -164,6 +211,14 @@
     <footer>
         <p>&copy; 2025 Black Knights. Este site foi desenvolvido de forma independente e não possui qualquer vínculo e afiliação do jogo original ou de seus desenvolvedores. <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
     </footer>
-    
+    <script>
+  //load        
+    $(window).on('load', function () {
+    $('#load').delay(800).fadeOut('slow'); 
+    $('body').delay(500).css({'overflow': 'visible'});
+    });
+
+
+    </script>
 </body>
 </html>
