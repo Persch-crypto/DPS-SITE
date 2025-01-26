@@ -9,12 +9,11 @@
             font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #34495e; /* Mudando o fundo para um tom mais chamativo */
+            background-color: #34495e;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+
         }
 
         .header {
@@ -35,45 +34,52 @@
         .back-button {
             position: absolute;
             top: 40px;
-            left: 20px;   
+            left: 20px;
             background: none;
             border: none;
             cursor: pointer;
             transition: transform 0.3s;
-
-           
-            /*border: #e22626 2px solid;
-            font-size: 1.5em;
-            color: #1d0303;
-            border-radius: 50%;
-            background-color: #ec0909;
-             background-image: url("seta.png");
-            */
-
-
         }
-        #seta{
+
+        #seta {
             width: 50px;
             height: 50px;
             margin-left: 50px;
             margin-top: -10px;
         }
 
-        .back-button:hover {
-            transform: scale(1.1);
+        .main-container {
+            flex: 1; /* Garante que o conteúdo ocupe o espaço restante */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
 
-        .form-container {
+        .contairner-geral,
+        .dicas {
             background: #2c3e50;
             border-radius: 10px;
             padding: 30px;
-            width: 80%;
-            max-width: 650px;
-            margin-top: 30px;
+            width: 50%;
+            max-width: 600px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .dicas {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+        }
+
+        .form-container {
+            display: fixed;
+      
+            flex-direction: column;
+            align-items: center;
+            
         }
 
         .form-container h2 {
@@ -148,108 +154,99 @@
         footer {
             background-color: #121212;
             color: #888;
+            
             padding: 20px;
             width: 100%;
             text-align: center;
-            margin-top: 30px;
+            position: absolute; /* Fixa o footer na parte inferior */
+            bottom: -20px; /* Alinha o footer na parte inferior da página */
         }
-
-        /* Ajuste para o botão das relíquias */
-        select {
-            padding: 15px;
-            font-size: 1.2em;
-            border-radius: 8px;
-            background-color: #34495e;
-            color: #ecf0f1;
-        }
-
-        input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-             margin: 0;
-        }
-
-        
-
     </style>
 </head>
 <body>
     <div class="header">
-        <button class="back-button" onclick="window.location.href='../index.html'" >
-            <img src="../images/seta.png" alt="" id="seta" >
+        <button class="back-button" onclick="window.location.href='../index.html'">
+            <img src="../images/seta.png" alt="" id="seta">
         </button>
         <h1>DPS</h1>
     </div>
 
-    <div>
+    <div class="main-container">
+        <!-- Div Container Geral -->
+        <div class="contairner-geral">
+            <div class="form-container">
+                <h2>Personagem</h2>
+                <form id="dps-form">
+                    <div class="form-group">
+                        <label for="base-damage">Dano máximo</label>
+                        <input type="number" id="base-damage" name="base-damage" required>
+                        <img src="../images/sword.png" alt="Dano Base">
+                    </div>
 
-        <div class="form-container">
-            <h2>Character</h2>
-            
-            <form id="dps-form">
-                <div class="form-group">
-                    <label for="base-damage">Dano máximo</label>
-                    <input type="number" id="base-damage" name="base-damage" required>
-                    <img src="../images/sword.png" alt="Dano Base">
-                </div>
+                    <div class="form-group">
+                        <label for="attack-speed">Velocidade de Ataque (s)</label>
+                        <input type="number" id="attack-speed" name="attack-speed" step="0.01" required>
+                        <img src="../images/velocidade.png" alt="Velocidade de Ataque">
+                    </div>
 
-                <div class="form-group">
-                    <label for="attack-speed">Velocidade de Ataque (s)</label>
-                    <input type="number" id="attack-speed" name="attack-speed" step="0.01" required>
-                    <img src="../images/velocidade.png" alt="Velocidade de Ataque">
-                </div>
+                    <div class="form-group">
+                        <label for="ticks">Ticks do Efeito</label>
+                        <input type="number" id="ticks" name="ticks" placeholder="Número de ticks (ex: 10)" required>
+                    </div>
 
-                <div class="form-group">
-                    <label for="ticks">Ticks do Efeito</label>
-                    <input type="number" id="ticks" name="ticks" placeholder="Número de ticks (ex: 10)" required>
-                </div>
+                    <div class="form-group">
+                        <label for="effect-percentage">Porcentagem por Tick (%)</label>
+                        <input type="number" id="effect-percentage" name="effect-percentage" step="0.1" placeholder="Porcentagem por tick">
+                    </div>
 
-                <div class="form-group">
-                    <label for="effect-percentage">Porcentagem por Tick (%)</label>
-                    <input type="number" id="effect-percentage" name="effect-percentage" step="0.1" placeholder="Porcentagem por tick">
-                </div>
+                    <div class="form-group">
+                        <label for="relic">Escolha uma Relíquia</label>
+                        <select id="relic" name="relic">
+                            <option value="">Selecione uma Relíquia</option>
+                            <option value="relic1">Infernal Gaze (5% element type)</option>
+                            <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
+                            <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
+                            <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
+                            <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
+                            <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
+                            <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
+                            <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="relic">Escolha uma Relíquia</label>
-                    <select id="relic" name="relic">
-                        <option value="">Selecione uma Relíquia</option>
-                        <option value="relic1">Infernal Gaze (5% element type)</option>
-                        <option value="relic2">Mirror Blade (5% Psychical Damage + 20% Psychical critical-chance)</option>
-                        <option value="relic3">Miracle Timepiece (5% Magic damage + 8% Element type)</option>
-                        <option value="relic4">Mermaid Crown (5% Magic Damage + 8% Aqua Damage)</option>
-                        <option value="relic5">Clover of the Wind (5% Magic Damage + 8% Air Damage)</option>
-                        <option value="relic6">Leaf Clover (5% Magic Damage + 8% Dark Damage)</option>
-                        <option value="relic7">Amplifying Codex (4% Magic Damage)</option>
-                        <option value="relic8">Steel Shiv (4% Psychical Damage)</option>
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label for="critical-chance">Chance de Crítico (%)</label>
+                        <input type="number" id="critical-chance" name="critical-chance" step="0.1">
+                    </div>
 
-                <div class="form-group">
-                    <label for="critical-chance">Chance de Crítico (%)</label>
-                    <input type="number" id="critical-chance" name="critical-chance" step="0.1">
-                </div>
+                    <div class="form-group">
+                        <label for="critical-damage">Dano Crítico (%)</label>
+                        <input type="number" id="critical-damage" name="critical-damage" step="0.1">
+                    </div>
 
-                <div class="form-group">
-                    <label for="critical-damage">Dano Crítico (%)</label>
-                    <input type="number" id="critical-damage" name="critical-damage" step="0.1">
-                </div>
+                    <button type="button" class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
+               
 
-                <button type="button" class="calculate-button" onclick="calculateDPS()">Calcular DPS</button>
             </form>
 
             <div id="result" class="result-container">
                 <p id="dps-result">DPS Calculado: </p>
             </div>
+            
         </div>
 
-       
+    </div>
 
+
+    <div class="dicas">
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, nisi! Modi hic, cupiditate accusamus voluptas vero eum nesciunt non laboriosam omnis illum  deleniti adipisci pariatur odio sit quia perspiciatis maxime?</p>
     </div>
 
 
     <footer>
         <p>&copy; 2025 Black Knights. Todos os direitos reservados.</p>
     </footer>
+ 
 
     <script>
         function calculateDPS() {
@@ -302,4 +299,5 @@
         }
     </script>
 </body>
+
 </html>
