@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de DPS com Passivas</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
@@ -17,6 +19,49 @@
             min-height: 100vh;
             overflow-x: hidden
         }
+          /*tela carregamento*/
+          #carregar{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 90vh;
+        transform: scale(3);
+        }
+        #carrega{
+        animation: rodar 3s infinite;
+        border: 4px solid rgb(178, 101, 230);
+        border-right-color: #683aa3;
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        }
+        @keyframes rodar {
+        to{
+        transform: rotate(3turn);
+
+        }
+        }
+
+
+        #load{
+        position:fixed;
+        top:0;
+        left:0 ;
+        right:0;
+        bottom:0;
+        background-color:#7c5aa9;
+        }
+        
+        .header {
+            background-color: #9070b9;
+            width: 100%;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: block;
+            position: fixed;
+        }
+
 
         .header {
             background-color: #9070b9;
@@ -66,6 +111,7 @@
             border-radius: 10px;
             padding: 20px;
             margin: 20px;
+            margin-top: 10%;
             width: 80%;
             max-width: 600px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -204,9 +250,18 @@
 
     </style>
 </head>
+<div id="load">
+    <div class="inner">
+      <div id="carregar">
+        <div id="carrega"></div>
+      </div>
+    </div>
+  </div>
 <body>
     <div class="header">
+        <br>
         <h1>Calculadora de DPS com Adição de Passiva</h1>
+        <br>
         <button class="back-button" onclick="window.location.href='page5.html'"> 
             <img src="../images/seta.png" alt="" id="seta" >
         </button>
@@ -375,6 +430,11 @@
 
             document.getElementById('result').style.display = 'block';
         }
+        //load        
+        $(window).on('load', function () {
+          $('#load').delay(800).fadeOut('slow'); 
+          $('body').delay(500).css({'overflow': 'visible'});
+          });
     </script>
 </body>
 </html>
