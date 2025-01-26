@@ -9,7 +9,7 @@
             font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #34495e;
+            background-color: #7c5aa9;
             color: #f5f5f5;
             display: flex;
             flex-direction: column;
@@ -19,7 +19,7 @@
         }
 
         .header {
-            background-color: #2c3e50;
+            background-color: #9070b9;
             width: 100%;
             padding: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -65,7 +65,7 @@
 
     
         .form-container {
-            background: #2c3e50;
+            background: #9070b9;
             border-radius: 10px;
             padding: 20px;
             margin: 20px;
@@ -87,6 +87,7 @@
             display: block;
             margin-bottom: 5px;
             color: #cccccc;
+            
         }
         .form-group input, .form-group select {
          
@@ -94,15 +95,17 @@
             border: none;
             border-radius: 5px;
             font-size: 1em;
-            background: #34495e;
+            background: #7c5aa9;
             color: #ffffff;
          }
 
         .form-group input{
             width: 88.5%;
+            
         }
         .form-group select{
             width: 100%;
+            
         }
 
         .form-group img {
@@ -133,21 +136,13 @@
         .result-container {
             margin-top: 20px;
             padding: 20px;
-            background: #3a4f70;
+            background: #7c5aa9;
             border-radius: 10px;
             color: #ffffff;
             font-size: 1.2em;
             text-align: center;
         }
 
-        footer {
-            background-color: #121212;
-            color: #888;
-            padding: 20px;
-            width: 100%;
-            text-align: center;
-            margin-top: auto;
-        }
 
         .highlight {
             color: orange;
@@ -183,8 +178,9 @@
         .orange-passive-3, 
         .orange-passive-4, 
         .orange-passive-5 {
-            color: rgb(193, 60, 191);
-        }
+            color: white;
+            animation: rgbColors 3s infinite;
+         }
 
         /* Passivas com fundo destacado, mas não com a cor laranja */
         .passive-option {
@@ -202,6 +198,21 @@
              margin: 0;
         }
 
+        @keyframes rgbColors {
+    0% {
+      color: red;
+    }
+    33% {
+      color: green;
+    }
+    66% {
+      color: blue;
+    }
+    100% {
+      color: red;
+    }
+
+ }
         
     </style>
 </head>
@@ -306,11 +317,6 @@
             <p id="new-attack-speed-result">SPA com Passiva: </p>
         </div>
     </div>
-    
-
-    <footer>
-        <p>&copy; 2025 Black Knights. Todos os direitos reservados.</p>
-    </footer>
 
     <script>
         // Função principal para calcular o DPS
