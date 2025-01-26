@@ -115,6 +115,7 @@
         margin-bottom: 5px;
         color: #cccccc;
         
+        
     }
     .form-group input, .form-group select {
     
@@ -128,6 +129,7 @@
 
     .form-group input{
         width: 88.5%;
+        
         
     }
     .form-group select{
@@ -184,6 +186,14 @@
     .old-dps {
         text-decoration: line-through;
         color: #ff6347;
+    }
+
+    .epic {
+        color: #3d0289;
+    }
+
+    .rare {
+        color: #0f0bf1;
     }
 
     .legendary {

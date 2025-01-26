@@ -180,8 +180,14 @@
         color: orange;
     }
 
+    .epic {
+        color: #3d0289;
+    }
 
-    /* Styled Range Display */
+    .rare {
+        color: #0f0bf1;
+    }
+
     .range {
         font-size: 1.1em;
         color: #77dd77;
